@@ -4,13 +4,13 @@ const https = require('https');
 const modelConfigs = [
     {
         model: 'meta/llama-3.1-8b-instruct',
-        apiKey: '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',
+        apiKey: process.env.NVIDIA_API_KEY || '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',
         maxTokens: 250,
         temperature: 0.5
     },
     {
         model: 'meta/llama-3.1-70b-instruct',
-        apiKey: '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',
+        apiKey: process.env.NVIDIA_API_KEY || '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',
         maxTokens: 250,
         temperature: 0.5
     }
