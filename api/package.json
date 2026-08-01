@@ -1,0 +1,12 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "main": "src/functions/chat.js",
+    "scripts": {
+        "start": "func start"
+    },
+    "dependencies": {
+        "openai": "^4.0.0",
+        "@azure/functions": "^4.0.0"
+    }
+}

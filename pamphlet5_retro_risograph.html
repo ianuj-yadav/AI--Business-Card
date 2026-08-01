@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Pamphlet 5: Warm Craft Coffee & Cream | Anuj Yadav Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-coffee: #F9F6F0;
+            --card-cream: #FFFFFF;
+            --border-coffee: #E6DFD5;
+            --accent-espresso: #3C2A21;
+            --accent-caramel: #D97706;
+            --accent-warm: #D9531E;
+            --text-espresso: #2B1E16;
+            --text-subtle: #6B5B52;
+            --font-head: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-coffee);
+            color: var(--text-espresso);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .pamphlet-banner {
+            background: var(--accent-espresso);
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 14px rgba(60, 42, 33, 0.25);
+        }
+
+        .pamphlet-badge {
+            background: var(--accent-caramel);
+            color: #FFFFFF;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.8rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .coffee-card {
+            background: var(--card-cream);
+            border: 1.5px solid var(--border-coffee);
+            border-radius: 24px;
+            padding: 34px;
+            box-shadow: 0 8px 24px rgba(60, 42, 33, 0.04);
+            transition: all 0.25s ease;
+        }
+
+        .coffee-card:hover {
+            border-color: var(--accent-caramel);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(217, 119, 6, 0.12);
+        }
+
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+
+        @media (max-width: 900px) {
+            .col-8, .col-4, .col-6 { grid-column: span 12; }
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--accent-espresso);
+            margin: 10px 0;
+        }
+
+        .coffee-pill {
+            display: inline-block;
+            background: #F3ECE1;
+            color: var(--accent-espresso);
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-coffee);
+        }
+
+        .btn-coffee {
+            background: var(--accent-espresso);
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 26px;
+            border-radius: 14px;
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(60, 42, 33, 0.25);
+            margin-top: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pamphlet-banner">
+        <span>☕ <strong>NEW DESIGN PAMPHLET 5</strong>: Warm Craft Coffee & Cream Editorial</span>
+        <span class="pamphlet-badge">Theme E: Cozy Craft Warmth</span>
+    </div>
+
+    <div class="grid-layout">
+        <!-- Hero Card -->
+        <div class="coffee-card col-8">
+            <span class="coffee-pill"><i class="fas fa-coffee"></i> AI Engineer & Full-Stack Developer</span>
+            <h1 class="hero-title">Anuj Yadav</h1>
+            <p style="font-size: 1.05rem; font-weight: 600; line-height: 1.6; color: var(--text-subtle);">
+                Turning caffeine into clean, human-crafted full-stack web platforms, Generative AI agent studios, Tier 3 Hybrid RAG retrieval systems, and TDL code engines.
+            </p>
+            <a href="#" class="btn-coffee"><i class="fas fa-mug-hot"></i> Explore Coffee Studio</a>
+        </div>
+
+        <!-- Chatbot Box -->
+        <div class="coffee-card col-4">
+            <span class="coffee-pill" style="color: var(--accent-caramel);">AI Avatar Assistant</span>
+            <h3 style="font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; margin-top: 8px;">AI Studio Wingman</h3>
+            <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-subtle); margin-top: 6px;">
+                Interactive AI wingman preloaded with technical notes.
+            </p>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="coffee-card col-6">
+            <span class="coffee-pill" style="color: var(--accent-warm);">Academic Marketplace</span>
+            <h2 style="font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; margin-top: 8px;">NotesHub Elite</h2>
+            <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-subtle); margin-top: 6px;">
+                Full student study platform with PostgreSQL backend, sales analytics, and shopping cart.
+            </p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="coffee-card col-6">
+            <span class="coffee-pill" style="color: var(--accent-caramel);">AI RAG Platform</span>
+            <h2 style="font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; margin-top: 8px;">TDL-GPT System</h2>
+            <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-subtle); margin-top: 6px;">
+                Tier 3 RAG platform for Tally Prime with FAISS vector search & AST validation.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

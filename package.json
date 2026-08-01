@@ -1,0 +1,15 @@
+{
+  "name": "ai-business-card",
+  "version": "1.0.0",
+  "description": "AI Business Card for Mehek Aggarwal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "openai": "^4.52.7"
+  }
+}

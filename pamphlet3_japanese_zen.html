@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Pamphlet 3: Nordic Frost & Architectural Line | Anuj Yadav Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-nordic: #F8FAFC;
+            --card-white: #FFFFFF;
+            --border-slate: #E2E8F0;
+            --border-active: #2563EB;
+            --text-slate: #0F172A;
+            --text-sub: #64748B;
+            --accent-blue: #2563EB;
+            --font-nordic: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-nordic);
+            color: var(--text-slate);
+            font-family: var(--font-nordic);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .pamphlet-banner {
+            background: var(--text-slate);
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: var(--font-nordic);
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .pamphlet-badge {
+            background: var(--accent-blue);
+            color: #FFFFFF;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nordic-card {
+            background: var(--card-white);
+            border: 1.5px solid var(--border-slate);
+            border-radius: 20px;
+            padding: 34px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+            transition: all 0.2s ease;
+        }
+
+        .nordic-card:hover {
+            border-color: var(--border-active);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+
+        @media (max-width: 900px) {
+            .col-8, .col-4, .col-6 { grid-column: span 12; }
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
+            color: var(--text-slate);
+            margin: 12px 0;
+        }
+
+        .nordic-tag {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+            background: #EFF6FF;
+            padding: 4px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .btn-nordic {
+            background: var(--accent-blue);
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-top: 16px;
+        }
+
+        .btn-nordic:hover { background: #1D4ED8; }
+    </style>
+</head>
+<body>
+
+    <div class="pamphlet-banner">
+        <span>❄️ <strong>NEW DESIGN PAMPHLET 3</strong>: Nordic Frost & Minimal Architectural Line</span>
+        <span class="pamphlet-badge">Theme C: Clean Nordic Precision</span>
+    </div>
+
+    <div class="grid-layout">
+        <!-- Hero Card -->
+        <div class="nordic-card col-8">
+            <span class="nordic-tag">Engineering System // Anuj Yadav</span>
+            <h1 class="hero-title">Architecting Precision Systems.</h1>
+            <p style="font-size: 1.05rem; color: var(--text-sub); line-height: 1.6; font-weight: 500;">
+                Creating ultra-clean web applications, Tier 3 Hybrid RAG platforms, and production-grade software architectures with Scandinavian precision.
+            </p>
+            <a href="#" class="btn-nordic"><i class="fas fa-arrow-right"></i> Explore Architecture</a>
+        </div>
+
+        <!-- Chatbot Box -->
+        <div class="nordic-card col-4">
+            <span class="nordic-tag" style="background: #F8FAFC; color: var(--text-slate);">AI Module</span>
+            <h3 style="font-size: 1.4rem; font-weight: 800; margin-top: 10px;">Studio Assistant</h3>
+            <p style="font-size: 0.9rem; color: var(--text-sub); margin-top: 8px; line-height: 1.5;">
+                Direct interactive AI guide answering developer questions.
+            </p>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="nordic-card col-6">
+            <span class="nordic-tag">Web Platform</span>
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-top: 10px;">NotesHub Elite</h2>
+            <p style="font-size: 0.92rem; color: var(--text-sub); margin-top: 6px; line-height: 1.5;">
+                Full academic study materials marketplace with multi-page navigation and PostgreSQL backend.
+            </p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="nordic-card col-6">
+            <span class="nordic-tag">RAG Engine</span>
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-top: 10px;">TDL-GPT System</h2>
+            <p style="font-size: 0.92rem; color: var(--text-sub); margin-top: 6px; line-height: 1.5;">
+                Domain-specific AI RAG platform for Tally Definition Language with FAISS vector search.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

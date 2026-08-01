@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Pamphlet 2: Editorial Neo-Brutalism | Anuj Yadav Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-paper: #F5F0E6;
+            --card-white: #FFFFFF;
+            --border-bold: #111111;
+            --accent-terracotta: #D9531E;
+            --accent-yellow: #F4C430;
+            --accent-olive: #656D4A;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--border-bold);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .pamphlet-banner {
+            background: #111111;
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border: 3px solid #111111;
+            box-shadow: 4px 4px 0px #111111;
+        }
+
+        .pamphlet-badge {
+            background: var(--accent-terracotta);
+            color: #FFFFFF;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.8rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .brutal-card {
+            background: var(--card-white);
+            border: 3.5px solid var(--border-bold);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 6px 6px 0px var(--border-bold);
+            transition: all 0.2s ease;
+        }
+
+        .brutal-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 10px 10px 0px var(--border-bold);
+        }
+
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+
+        @media (max-width: 900px) {
+            .col-8, .col-4, .col-6 { grid-column: span 12; }
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 12px 0;
+            text-transform: uppercase;
+        }
+
+        .stamp-tag {
+            display: inline-block;
+            background: var(--accent-yellow);
+            border: 2px solid var(--border-bold);
+            color: var(--border-bold);
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 0px var(--border-bold);
+        }
+
+        .btn-brutal {
+            background: var(--accent-terracotta);
+            color: #FFFFFF;
+            border: 3px solid var(--border-bold);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 4px 4px 0px var(--border-bold);
+            margin-top: 14px;
+        }
+
+        .btn-brutal:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--border-bold);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pamphlet-banner">
+        <span>🎨 <strong>DESIGN PAMPHLET 2 OF 5</strong>: Editorial Neo-Brutalism & Craft Paper</span>
+        <span class="pamphlet-badge">Theme B: Raw Tactile & Bold</span>
+    </div>
+
+    <div class="grid-layout">
+        <!-- Hero Card -->
+        <div class="brutal-card col-8">
+            <span class="stamp-tag"><i class="fas fa-bolt"></i> AI & FULL-STACK ENGINEER</span>
+            <h1 class="hero-title">ANUJ YADAV</h1>
+            <p style="font-size: 1.05rem; line-height: 1.6; font-weight: 600;">
+                High-impact software engineering, custom TDL 4GL parser modules, RAG pipelines, and full-stack web platforms built with raw precision and zero fluff.
+            </p>
+            <a href="#" class="btn-brutal"><i class="fas fa-arrow-right"></i> VIEW PROJECTS MATRIX</a>
+        </div>
+
+        <!-- Chatbot Box -->
+        <div class="brutal-card col-4" style="background: #FFF9E6;">
+            <h3 style="font-family: var(--font-head); font-size: 1.4rem; font-weight: 800; text-transform: uppercase;">
+                <i class="fas fa-terminal"></i> AI WINGMAN
+            </h3>
+            <p style="font-size: 0.9rem; font-weight: 600; margin-top: 8px;">
+                Direct interactive terminal query engine for Anuj Yadav.
+            </p>
+            <div style="background: #FFFFFF; border: 2.5px solid #111111; padding: 14px; border-radius: 10px; margin-top: 16px; font-weight: 700; box-shadow: 3px 3px 0px #111111;">
+                > SYSTEM READY. Ask anything about Anuj's codebases!
+            </div>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="brutal-card col-6">
+            <span class="stamp-tag" style="background: #E2F1AF;">PROJECT 01</span>
+            <h2 style="font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; margin-top: 10px;">NOTES-ELITEHUB</h2>
+            <p style="font-size: 0.95rem; font-weight: 600; margin-top: 6px;">
+                Full academic study marketplace with PostgreSQL schema, user analytics, and client cart system.
+            </p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="brutal-card col-6">
+            <span class="stamp-tag" style="background: #FFC0AD;">PROJECT 02</span>
+            <h2 style="font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; margin-top: 10px;">TDL-GPT RAG SYSTEM</h2>
+            <p style="font-size: 0.95rem; font-weight: 600; margin-top: 6px;">
+                Tier 3 RAG platform for Tally Prime with FAISS vector search & AST validation.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

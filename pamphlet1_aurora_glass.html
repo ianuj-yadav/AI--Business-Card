@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Pamphlet 1: Aurora Dark Glass & Neon Wave | Anuj Yadav Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #070B14;
+            --mesh: radial-gradient(at 0% 0%, rgba(0, 240, 255, 0.25) 0px, transparent 50%),
+                    radial-gradient(at 100% 0%, rgba(255, 0, 122, 0.25) 0px, transparent 50%),
+                    radial-gradient(at 50% 100%, rgba(124, 58, 237, 0.25) 0px, transparent 50%);
+            --glass-card: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --neon-cyan: #00F0FF;
+            --neon-pink: #FF007A;
+            --neon-purple: #A855F7;
+            --text-glow: #F8FAFC;
+            --text-muted: #94A3B8;
+            --font-head: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: var(--mesh);
+            background-attachment: fixed;
+            color: var(--text-glow);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .pamphlet-banner {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--glass-border);
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            backdrop-filter: blur(14px);
+        }
+
+        .pamphlet-badge {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+            color: #000000;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.8rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: var(--glass-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 34px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: all 0.25s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+
+        @media (max-width: 900px) {
+            .col-8, .col-4, .col-6 { grid-column: span 12; }
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #FFFFFF, var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 12px 0;
+        }
+
+        .neon-pill {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+        }
+
+        .btn-aurora {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            color: #000000;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 16px;
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin-top: 16px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pamphlet-banner">
+        <span>🌌 <strong>NEW DESIGN PAMPHLET 1</strong>: Aurora Dark Glass & Neon Wave</span>
+        <span class="pamphlet-badge">Theme A: Neon Glass Mesh</span>
+    </div>
+
+    <div class="grid-layout">
+        <!-- Hero Card -->
+        <div class="glass-card col-8">
+            <span class="neon-pill"><i class="fas fa-microchip"></i> AI Engineer & Full-Stack Architect</span>
+            <h1 class="hero-title">Anuj Yadav</h1>
+            <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6;">
+                Building hyper-modern translucent dark glass interfaces, Generative AI agent studios, Tier 3 Hybrid RAG platforms, and multi-page web marketplaces.
+            </p>
+            <a href="#" class="btn-aurora"><i class="fas fa-bolt"></i> Launch Neon Studio</a>
+        </div>
+
+        <!-- Chatbot Box -->
+        <div class="glass-card col-4">
+            <h3 style="font-family: var(--font-head); font-size: 1.4rem; color: var(--neon-pink);">
+                <i class="fas fa-robot"></i> AI Wingman
+            </h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;">
+                Interactive sub-second AI assistant module.
+            </p>
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 16px; padding: 14px; margin-top: 16px; font-size: 0.9rem; color: var(--text-glow);">
+                👋 Yo! I'm Anuj's Neon Glass AI Wingman. What codebase shall we inspect?
+            </div>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="glass-card col-6">
+            <span class="neon-pill" style="border-color: var(--neon-pink); color: var(--neon-pink);">NotesHub Elite</span>
+            <h2 style="font-family: var(--font-head); font-size: 1.8rem; margin-top: 10px;">Academic Marketplace</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
+                Full multi-page platform with PostgreSQL database backend, user analytics dashboard, and client cart system.
+            </p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="glass-card col-6">
+            <span class="neon-pill" style="border-color: var(--neon-purple); color: var(--neon-purple);">TDL-GPT RAG Engine</span>
+            <h2 style="font-family: var(--font-head); font-size: 1.8rem; margin-top: 10px;">Principal TDL Assistant</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
+                Tier 3 Hybrid RAG retrieval engine with FAISS dense vector search and autonomous AST hierarchy validation.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

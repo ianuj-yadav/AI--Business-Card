@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Pamphlet 4: Vaporwave Synthwave 80s | Anuj Yadav Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-synth: #120924;
+            --grid-line: rgba(0, 240, 255, 0.15);
+            --card-synth: #1C0F38;
+            --neon-pink: #FF007A;
+            --neon-cyan: #00F0FF;
+            --neon-amber: #FFB800;
+            --text-glow: #FFFFFF;
+            --text-muted: #B8A9D9;
+            --font-synth: 'Orbitron', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-synth);
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 36px 36px;
+            color: var(--text-glow);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .pamphlet-banner {
+            background: rgba(28, 15, 56, 0.95);
+            border: 2px solid var(--neon-pink);
+            color: var(--text-glow);
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-family: var(--font-synth);
+            font-size: 0.88rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            box-shadow: 0 0 20px rgba(255, 0, 122, 0.4);
+        }
+
+        .pamphlet-badge {
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-amber));
+            color: #000000;
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 0.8rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .synth-card {
+            background: var(--card-synth);
+            border: 2px solid rgba(255, 0, 122, 0.4);
+            border-radius: 22px;
+            padding: 32px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            transition: all 0.25s ease;
+        }
+
+        .synth-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.35);
+            transform: translateY(-4px);
+        }
+
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+
+        @media (max-width: 900px) {
+            .col-8, .col-4, .col-6 { grid-column: span 12; }
+        }
+
+        .hero-title {
+            font-family: var(--font-synth);
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+            text-shadow: 0 0 20px rgba(255, 0, 122, 0.5);
+        }
+
+        .synth-tag {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.15);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: var(--font-synth);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-synth {
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-amber));
+            color: #000000;
+            border: none;
+            padding: 12px 26px;
+            border-radius: 12px;
+            font-family: var(--font-synth);
+            font-weight: 900;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin-top: 16px;
+            box-shadow: 0 0 20px rgba(255, 0, 122, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pamphlet-banner">
+        <span>🌆 <strong>NEW DESIGN PAMPHLET 4</strong>: Vaporwave Synthwave 80s Cyberpunk</span>
+        <span class="pamphlet-badge">Theme D: 80s Synth Grid</span>
+    </div>
+
+    <div class="grid-layout">
+        <!-- Hero Card -->
+        <div class="synth-card col-8">
+            <span class="synth-tag">// SYNTH ENGINE LOADED</span>
+            <h1 class="hero-title">ANUJ YADAV</h1>
+            <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; font-weight: 600;">
+                Building high-energy retro synth web platforms, 3D WebGL particle swarms, and production RAG pipeline architectures.
+            </p>
+            <a href="#" class="btn-synth"><i class="fas fa-play"></i> LAUNCH SYNTHWAVE SHOWCASE</a>
+        </div>
+
+        <!-- Chatbot Box -->
+        <div class="synth-card col-4">
+            <span class="synth-tag" style="border-color: var(--neon-pink); color: var(--neon-pink);">SYNTH AI BOT</span>
+            <h3 style="font-family: var(--font-synth); font-size: 1.3rem; margin-top: 10px;">STUDIO WINGMAN</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 8px;">
+                Interactive 80s AI assistant answering technical questions.
+            </p>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="synth-card col-6">
+            <span class="synth-tag">// TRACK 01</span>
+            <h2 style="font-family: var(--font-synth); font-size: 1.5rem; margin-top: 10px; color: var(--neon-cyan);">NOTES-ELITEHUB</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
+                Multi-page academic study materials marketplace with PostgreSQL schema.
+            </p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="synth-card col-6">
+            <span class="synth-tag">// TRACK 02</span>
+            <h2 style="font-family: var(--font-synth); font-size: 1.5rem; margin-top: 10px; color: var(--neon-pink);">TDL-GPT RAG ENGINE</h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 6px;">
+                Tier 3 RAG platform for Tally Prime with FAISS vector search & AST validation.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

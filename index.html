@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuj Yadav — Full-Page Fluid Bento AI & Software Developer Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="theme-light">
+
+    <!-- 3D Interactive Ambient Sparkle Canvas -->
+    <canvas id="cosmicCanvas"></canvas>
+
+    <!-- Toast Notification Popup -->
+    <div id="toastNotification" class="toast-popup">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+
+    <!-- Custom Glowing Mouse Tracer -->
+    <div id="mouseCursor" class="mouse-cursor"></div>
+    <div id="mouseFollower" class="mouse-follower"></div>
+
+    <!-- Wizard Hat Loading Screen (Exact Match to User Reference) -->
+    <div id="preloader" class="preloader">
+        <div class="hat-loader-img-container">
+            <img src="hat_filled.png" alt="Wizard Hat Unfilled" class="hat-img-base">
+            <img src="hat_filled.png" alt="Wizard Hat Filled" class="hat-img-fill">
+        </div>
+    </div>
+
+    <!-- Full-Width Fluid Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="logo-brand">
+            <div class="brand-avatar-mini"><i class="fas fa-code"></i></div>
+            <div class="brand-text">
+                <span class="brand-name">Anuj Yadav</span>
+                <span class="brand-status"><span class="status-dot"></span> Open for AI & Dev Roles</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#about" class="nav-link"><i class="fas fa-user-astronaut"></i> About</a>
+            <a href="#skills" class="nav-link"><i class="fas fa-layer-group"></i> Skills</a>
+            <a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Experience</a>
+            <a href="#projects" class="nav-link"><i class="fas fa-globe"></i> Website Projects</a>
+            <a href="#ai-assistant" class="nav-link"><i class="fas fa-robot"></i> AI Studio</a>
+            <a href="#contact" class="nav-link nav-contact-btn"><i class="fas fa-paper-plane"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- Interactive Project Showcase Modal Popup -->
+    <div id="projectModal" class="project-modal">
+        <div class="modal-overlay" onclick="closeProjectModal()"></div>
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
+            
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span id="modalProjectIcon" class="modal-project-icon"><i class="fas fa-folder-open"></i></span>
+                    <div>
+                        <h2 id="modalProjectTitle">Project Title</h2>
+                        <p id="modalProjectSubtitle" class="modal-subtitle">Project Subtitle</p>
+                    </div>
+                </div>
+                <div class="modal-links">
+                    <a id="modalGithubLink" href="#" target="_blank" class="modal-btn github-link">
+                        <i class="fab fa-github"></i> GitHub Source
+                    </a>
+                    <a id="modalLiveLink" href="#" target="_blank" class="modal-btn live-link" style="display:none;">
+                        <i class="fas fa-external-link-alt"></i> Open Live Website
+                    </a>
+                </div>
+            </div>
+
+            <!-- Screenshot Slider Carousel -->
+            <div class="modal-carousel-section">
+                <div class="carousel-viewport">
+                    <img id="modalCarouselImage" src="" alt="Project Screenshot" class="carousel-img">
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-nav-btn prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+                    <span id="carouselCounter" class="carousel-counter">Slide 1 of 3</span>
+                    <button class="carousel-nav-btn next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Modal Body Content -->
+            <div class="modal-body-content">
+                <div class="modal-section-title">
+                    <i class="fas fa-info-circle"></i> Overview & Architecture
+                </div>
+                <p id="modalDescription" class="modal-desc-text">Detailed project description goes here...</p>
+
+                <div class="modal-section-title" style="margin-top: 18px;">
+                    <i class="fas fa-check-circle"></i> Key Platform Features
+                </div>
+                <ul id="modalFeaturesList" class="modal-features-list">
+                    <!-- Dynamic Feature Bullet Points -->
+                </ul>
+
+                <div class="modal-section-title" style="margin-top: 18px;">
+                    <i class="fas fa-code"></i> Technologies Used
+                </div>
+                <div id="modalTechBadges" class="modal-tech-badges">
+                    <!-- Dynamic Tech Badges -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Fluid Edge-to-Edge Container -->
+    <div class="main-wrapper-fluid">
+        <div class="bento-grid-fluid">
+            
+            <!-- Hero Bento Card (Span 8 in 12-Col Layout) -->
+            <section id="about" class="bento-card bento-hero bento-span-8 tilt-card">
+                <div class="polaroid-frame">
+                    <div class="photo-container">
+                        <img src="anuj.jpg" alt="Anuj Yadav" class="profile-photo">
+                    </div>
+                    <p class="polaroid-caption">Anuj Yadav 📌</p>
+                </div>
+
+                <div class="hero-content">
+                    <div class="badge-row">
+                        <span class="pill-badge pill-emerald"><i class="fas fa-briefcase"></i> AI Developer Intern @ Binarysoft</span>
+                        <span class="pill-badge pill-amber"><i class="fas fa-graduation-cap"></i> B.Tech CSE @ Amity University</span>
+                    </div>
+
+                    <h1 class="hero-title">Architecting Fluid Web Platforms & Practical AI Systems</h1>
+                    <p class="hero-bio">
+                        Hi, I am <strong>Anuj Yadav</strong>, a New Delhi based <strong>AI Engineer & Full-Stack Web Developer</strong>. 
+                        I design expansive edge-to-edge web applications, Generative AI agentic platforms, Tier 3 Hybrid RAG engines, and scalable Node.js/React architectures.
+                    </p>
+
+                    <div class="quick-stats-row">
+                        <div class="stat-pill"><span class="stat-num">5+</span> Star Projects</div>
+                        <div class="stat-pill"><span class="stat-num">7.89</span> CGPA Amity</div>
+                        <div class="stat-pill"><span class="stat-num">AWS</span> Certified ML & AI</div>
+                        <div class="stat-pill"><span class="stat-num">2027</span> Expected Grad</div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="https://github.com/ianuj-yadav" target="_blank" class="action-btn btn-dark">
+                            <i class="fab fa-github"></i> GitHub Profile
+                        </a>
+                        <a href="https://linkedin.com/in/anuj-yadav" target="_blank" class="action-btn btn-blue">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <button onclick="copyToClipboard('ianujy@gmail.com', 'Email address copied!')" class="action-btn btn-light">
+                            <i class="fas fa-copy"></i> Copy Email
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FULL-FEATURED EMBEDDED AI CHATBOT BENTO PANEL (Span 4 in 12-Col Layout) -->
+            <section id="ai-assistant" class="bento-card bento-chat-card bento-span-4 tilt-card">
+                <div class="chat-bento-header">
+                    <div class="chat-bento-title">
+                        <div class="chat-avatar-icon"><i class="fas fa-robot"></i></div>
+                        <div>
+                            <h3>Anuj's AI Wingman</h3>
+                            <span class="chat-online-badge"><span class="pulse-dot"></span> Interactive Studio Panel</span>
+                        </div>
+                    </div>
+                    <button class="expand-panel-btn" onclick="toggleFullScreenChat()" title="Toggle Fullscreen Panel">
+                        <i class="fas fa-expand-alt" id="expandIcon"></i>
+                    </button>
+                </div>
+
+                <div class="chat-prompt-chips">
+                    <button class="chip-btn" onclick="askQuestion('What are Anuj\'s key technical skills?')">💡 Skills</button>
+                    <button class="chip-btn" onclick="askQuestion('Tell me about Anuj\'s experience at Binarysoft.')">💼 Experience</button>
+                    <button class="chip-btn" onclick="askQuestion('Tell me about NotesHub Elite website.')">📝 NotesHub</button>
+                    <button class="chip-btn" onclick="askQuestion('Tell me about TDL GPT project.')">🤖 TDL GPT</button>
+                </div>
+
+                <div id="chatBox" class="chat-bento-body">
+                    <div class="message bot">👋 Yo! Welcome to Anuj Yadav's Bento AI Studio. Ask me about his full-stack websites, AI projects, or tech skills! 🚀</div>
+                </div>
+
+                <div class="chat-bento-input-row">
+                    <input type="text" id="userInput" placeholder="Ask a question about Anuj or his projects..." />
+                    <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </section>
+
+            <!-- Technical Skills Bento Arsenal (Span 6 in 12-Col Layout) -->
+            <section id="skills" class="bento-card bento-span-6 tilt-card">
+                <div class="section-heading">
+                    <div>
+                        <h2><i class="fas fa-microchip icon-accent"></i> Technical Skills & Proficiency</h2>
+                        <p class="sub-heading">Engineering stack, frameworks, and mastery levels</p>
+                    </div>
+                    <span class="badge-handwritten">interactive stats 📊</span>
+                </div>
+
+                <div class="skills-bento-grid">
+                    <div class="skill-bar-card">
+                        <div class="skill-meta">
+                            <span class="skill-title"><i class="fab fa-python skill-icon py-icon"></i> Python & AI Systems</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                        <p class="skill-tags-inline">Generative AI · FAISS & RAG · LangChain · FastAPI</p>
+                    </div>
+
+                    <div class="skill-bar-card">
+                        <div class="skill-meta">
+                            <span class="skill-title"><i class="fab fa-java skill-icon java-icon"></i> Java & Data Structures (DSA)</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                        <p class="skill-tags-inline">Object-Oriented Programming · Algorithms · Optimization</p>
+                    </div>
+
+                    <div class="skill-bar-card">
+                        <div class="skill-meta">
+                            <span class="skill-title"><i class="fab fa-node-js skill-icon node-icon"></i> Full-Stack Web Development</span>
+                            <span class="skill-percentage">92%</span>
+                        </div>
+                        <div class="skill-progress-bar"><div class="progress-fill" style="width: 92%;"></div></div>
+                        <p class="skill-tags-inline">React.js · Node.js · Express.js · RESTful APIs · HTML5/CSS3</p>
+                    </div>
+
+                    <div class="skill-bar-card">
+                        <div class="skill-meta">
+                            <span class="skill-title"><i class="fab fa-aws skill-icon aws-icon"></i> AWS & Azure Cloud Infrastructure</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
+                        <p class="skill-tags-inline">AWS Prompt Engineering · Microsoft Azure · Cloud APIs</p>
+                    </div>
+
+                    <div class="skill-bar-card">
+                        <div class="skill-meta">
+                            <span class="skill-title"><i class="fas fa-database skill-icon db-icon"></i> Databases & Data Analytics</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                        <p class="skill-tags-inline">PostgreSQL · SQL · Power BI · Data Validation</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Timeline Section (Span 6 in 12-Col Layout) -->
+            <section id="experience" class="bento-card bento-span-6 tilt-card">
+                <div class="section-heading">
+                    <div>
+                        <h2><i class="fas fa-briefcase icon-accent"></i> Professional Experience</h2>
+                        <p class="sub-heading">Proven hands-on industry contributions</p>
+                    </div>
+                    <span class="badge-handwritten">work timeline 💼</span>
+                </div>
+
+                <div class="experience-timeline">
+                    <div class="exp-card current-exp">
+                        <div class="exp-header">
+                            <div>
+                                <span class="exp-role">Artificial Intelligence Engineer Intern</span>
+                                <h3 class="exp-company">Binarysoft Technologies</h3>
+                            </div>
+                            <span class="exp-date-badge active-date"><i class="fas fa-calendar-alt"></i> May 2026 - Present</span>
+                        </div>
+                        <p class="exp-desc">
+                            Engineered AI-powered web applications and chatbot systems, designed production RESTful APIs, managed backend relational databases, and optimized AI retrieval performance.
+                        </p>
+                        <div class="exp-tech-row">
+                            <span class="tech-chip">TDL AI Engine</span>
+                            <span class="tech-chip">Image-to-Text</span>
+                            <span class="tech-chip">AI Market Generator</span>
+                            <span class="tech-chip">REST APIs & AWS</span>
+                        </div>
+                    </div>
+
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <span class="exp-role">Data Analyst Virtual Intern</span>
+                                <h3 class="exp-company">Deloitte (Forage Simulation)</h3>
+                            </div>
+                            <span class="exp-date-badge"><i class="fas fa-calendar-alt"></i> Jun 2026 - Jul 2026</span>
+                        </div>
+                        <p class="exp-desc">
+                            Interpreted complex business datasets, performed rigorous data validation, and built interactive Power BI visualizations for forensic technology analysis.
+                        </p>
+                        <div class="exp-tech-row">
+                            <span class="tech-chip">Data Analytics</span>
+                            <span class="tech-chip">Power BI</span>
+                            <span class="tech-chip">Data Cleaning</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FULL LUCID WEBSITE PROJECTS SHOWCASE (Span 12 in 12-Col Layout) -->
+            <section id="projects" class="bento-card bento-span-12 tilt-card">
+                <div class="section-heading">
+                    <div>
+                        <h2><i class="fas fa-globe icon-accent"></i> Full Website & AI Project Showcase</h2>
+                        <p class="sub-heading">Lucid multi-page web applications, live platforms & AI architectures</p>
+                    </div>
+                    <span class="badge-handwritten">lucid web apps 🌐</span>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-tabs">
+                    <button class="filter-btn active" onclick="filterProjects('all')">All Platforms (5)</button>
+                    <button class="filter-btn" onclick="filterProjects('web')">Full Website Platforms (2)</button>
+                    <button class="filter-btn" onclick="filterProjects('ai')">AI & RAG Systems (3)</button>
+                </div>
+
+                <div class="projects-lucid-grid">
+                    
+                    <!-- NotesHub Elite Project Card -->
+                    <div class="lucid-project-card cat-web">
+                        <div class="lucid-card-top">
+                            <div class="lucid-project-meta">
+                                <span class="lucid-badge badge-orange"><i class="fas fa-shopping-cart"></i> Multi-Page Web Marketplace</span>
+                                <h3 class="lucid-project-title">NotesHub Elite</h3>
+                                <p class="lucid-project-subtitle">Complete Academic Study Materials Marketplace Platform</p>
+                            </div>
+                            <div class="lucid-card-actions">
+                                <a href="https://notes-elite-hub.vercel.app" target="_blank" class="lucid-action-btn live-btn">
+                                    <i class="fas fa-external-link-alt"></i> Launch Website
+                                </a>
+                                <button onclick="openProjectModal('noteshub')" class="lucid-action-btn gallery-btn">
+                                    <i class="fas fa-images"></i> View Screenshots (3)
+                                </button>
+                            </div>
+                        </div>
+                        <p class="lucid-project-desc">
+                            Comprehensive platform for students to buy, sell, and manage academic study materials. Features full multi-page navigation (Index, Login, Signup, Marketplace, Publish, Profile, Dashboard), seller analytics, drag-and-drop note publishing, and responsive client-side session management.
+                        </p>
+                        <div class="lucid-tech-bar">
+                            <span class="lucid-tech-tag">Node.js</span>
+                            <span class="lucid-tech-tag">Express.js</span>
+                            <span class="lucid-tech-tag">PostgreSQL</span>
+                            <span class="lucid-tech-tag">JavaScript (ES6+)</span>
+                            <span class="lucid-tech-tag">HTML5 / CSS3</span>
+                        </div>
+                    </div>
+
+                    <!-- TDL-GPT Project Card -->
+                    <div class="lucid-project-card cat-ai">
+                        <div class="lucid-card-top">
+                            <div class="lucid-project-meta">
+                                <span class="lucid-badge badge-indigo"><i class="fas fa-brain"></i> AI & Tier 3 RAG Engine</span>
+                                <h3 class="lucid-project-title">TDL Enterprise Assistant (TDL-GPT)</h3>
+                                <p class="lucid-project-subtitle">Principal Engineer AI for Tally Definition Language (TDL)</p>
+                            </div>
+                            <div class="lucid-card-actions">
+                                <a href="https://tdl-gpt.vercel.app/" target="_blank" class="lucid-action-btn live-btn">
+                                    <i class="fas fa-external-link-alt"></i> Open AI Studio
+                                </a>
+                                <button onclick="openProjectModal('tdlgpt')" class="lucid-action-btn gallery-btn">
+                                    <i class="fas fa-images"></i> View Screenshots (4)
+                                </button>
+                            </div>
+                        </div>
+                        <p class="lucid-project-desc">
+                            State-of-the-art domain-specific AI assistant and RAG platform designed exclusively for Tally Definition Language (TDL 4GL). Eliminates AI hallucinations using a Tier 3 Hybrid RAG retrieval pipeline (FAISS + BM25), Autonomous AST Hierarchy Validation, and Permanent Teaching Memory.
+                        </p>
+                        <div class="lucid-tech-bar">
+                            <span class="lucid-tech-tag">Python</span>
+                            <span class="lucid-tech-tag">FastAPI</span>
+                            <span class="lucid-tech-tag">React (Vite)</span>
+                            <span class="lucid-tech-tag">FAISS RAG</span>
+                            <span class="lucid-tech-tag">NVIDIA NIM API</span>
+                        </div>
+                    </div>
+
+                    <!-- Personal AI Workbench Project Card -->
+                    <div class="lucid-project-card cat-ai">
+                        <div class="lucid-card-top">
+                            <div class="lucid-project-meta">
+                                <span class="lucid-badge badge-emerald"><i class="fas fa-laptop-code"></i> Human-Crafted Bento Web Studio</span>
+                                <h3 class="lucid-project-title">Personal AI Workbench</h3>
+                                <p class="lucid-project-subtitle">Human-Crafted Full-Page Bento Layout AI Studio</p>
+                            </div>
+                            <div class="lucid-card-actions">
+                                <a href="https://github.com/ianuj-yadav/AI-Workbench.git" target="_blank" class="lucid-action-btn live-btn">
+                                    <i class="fab fa-github"></i> GitHub Source
+                                </a>
+                                <button onclick="openProjectModal('workbench')" class="lucid-action-btn gallery-btn">
+                                    <i class="fas fa-images"></i> View Screenshot (1)
+                                </button>
+                            </div>
+                        </div>
+                        <p class="lucid-project-desc">
+                            A clean, human-crafted full-page Bento workbench designed by Anuj Yadav. Features expansive edge-to-edge Obsidian layouts (#18181b), Pistachio & Lime accents (#dcf865), natural conversational assistant, 62ms response engine, and zero-exposure API security.
+                        </p>
+                        <div class="lucid-tech-bar">
+                            <span class="lucid-tech-tag">React 18</span>
+                            <span class="lucid-tech-tag">Vite 5</span>
+                            <span class="lucid-tech-tag">Bento UI Grid</span>
+                            <span class="lucid-tech-tag">Node.js</span>
+                            <span class="lucid-tech-tag">TailwindCSS</span>
+                        </div>
+                    </div>
+
+                    <!-- 3D Cybernetic Portfolio Pro Card -->
+                    <div class="lucid-project-card cat-ai">
+                        <div class="lucid-card-top">
+                            <div class="lucid-project-meta">
+                                <span class="lucid-badge badge-pink"><i class="fas fa-cube"></i> 3D WebGL Cybernetic Portfolio</span>
+                                <h3 class="lucid-project-title">Portfolio Pro (3D Cybernetic)</h3>
+                                <p class="lucid-project-subtitle">3D Interactive Cybernetic Developer Showcase</p>
+                            </div>
+                            <div class="lucid-card-actions">
+                                <a href="https://anuj-portfolio-eight-drab.vercel.app/" target="_blank" class="lucid-action-btn live-btn">
+                                    <i class="fas fa-external-link-alt"></i> Open 3D Website
+                                </a>
+                                <button onclick="openProjectModal('portfolio')" class="lucid-action-btn gallery-btn">
+                                    <i class="fas fa-images"></i> View Screenshots (5)
+                                </button>
+                            </div>
+                        </div>
+                        <p class="lucid-project-desc">
+                            High-performance 3D interactive developer portfolio built with React 18, Vite 5, Three.js WebGL, GSAP ScrollTrigger, and Lenis Smooth Scroll. Features Sandra AI (Gemini 2.0 Live API), 3,500-particle WebGL stage, matrix terminal loading, and keyboard-driven command palette.
+                        </p>
+                        <div class="lucid-tech-bar">
+                            <span class="lucid-tech-tag">React 18</span>
+                            <span class="lucid-tech-tag">Three.js</span>
+                            <span class="lucid-tech-tag">GSAP</span>
+                            <span class="lucid-tech-tag">Lenis Scroll</span>
+                            <span class="lucid-tech-tag">Gemini 2.0 API</span>
+                        </div>
+                    </div>
+
+                    <!-- Visual DSA Platform Card -->
+                    <div class="lucid-project-card cat-web">
+                        <div class="lucid-card-top">
+                            <div class="lucid-project-meta">
+                                <span class="lucid-badge badge-amber"><i class="fas fa-chart-bar"></i> Interactive Educational Web App</span>
+                                <h3 class="lucid-project-title">Visual DSA Algorithm Visualizer</h3>
+                                <p class="lucid-project-subtitle">Interactive Data Structures & Algorithm Platform</p>
+                            </div>
+                            <div class="lucid-card-actions">
+                                <a href="https://github.com/ianuj-yadav/Visual-Dsa-Algorithm.git" target="_blank" class="lucid-action-btn live-btn">
+                                    <i class="fab fa-github"></i> GitHub Source
+                                </a>
+                                <button onclick="openProjectModal('visualdsa')" class="lucid-action-btn gallery-btn">
+                                    <i class="fas fa-info-circle"></i> Project Details
+                                </button>
+                            </div>
+                        </div>
+                        <p class="lucid-project-desc">
+                            Interactive visualizer platform for complex Data Structures and Algorithms including sorting comparisons (QuickSort, MergeSort, HeapSort), graph traversals (BFS/DFS), and step-by-step execution animation controls.
+                        </p>
+                        <div class="lucid-tech-bar">
+                            <span class="lucid-tech-tag">Python</span>
+                            <span class="lucid-tech-tag">Data Structures</span>
+                            <span class="lucid-tech-tag">HTML5 Canvas</span>
+                            <span class="lucid-tech-tag">JavaScript (ES6)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Certifications & Accomplishments Section (Span 12) -->
+            <section class="bento-card bento-span-12 tilt-card">
+                <div class="section-heading">
+                    <div>
+                        <h2><i class="fas fa-award icon-accent"></i> Certifications & Academic Honors</h2>
+                        <p class="sub-heading">Verified achievements and credentials</p>
+                    </div>
+                    <span class="badge-handwritten">credentials 🎖️</span>
+                </div>
+
+                <div class="certs-bento-grid">
+                    <div class="cert-bento-card">
+                        <div class="cert-icon-circle aws-bg"><i class="fab fa-aws"></i></div>
+                        <div>
+                            <h4>Fundamentals of ML & AI</h4>
+                            <p class="cert-issuer">Amazon Web Services (AWS)</p>
+                        </div>
+                    </div>
+                    <div class="cert-bento-card">
+                        <div class="cert-icon-circle aws-bg"><i class="fab fa-aws"></i></div>
+                        <div>
+                            <h4>Essentials of Prompt Engineering</h4>
+                            <p class="cert-issuer">Amazon Web Services (AWS)</p>
+                        </div>
+                    </div>
+                    <div class="cert-bento-card">
+                        <div class="cert-icon-circle ant-bg"><i class="fas fa-brain"></i></div>
+                        <div>
+                            <h4>AI Fluency: Framework & Foundations</h4>
+                            <p class="cert-issuer">Anthropic</p>
+                        </div>
+                    </div>
+                    <div class="cert-bento-card">
+                        <div class="cert-icon-circle in-bg"><i class="fab fa-linkedin"></i></div>
+                        <div>
+                            <h4>Career Skills in Data Analytics</h4>
+                            <p class="cert-issuer">LinkedIn Learning</p>
+                        </div>
+                    </div>
+                    <div class="cert-bento-card">
+                        <div class="cert-icon-circle code-bg"><i class="fas fa-code"></i></div>
+                        <div>
+                            <h4>Alpha (DSA with Java)</h4>
+                            <p class="cert-issuer">Apna College</p>
+                        </div>
+                    </div>
+                    <div class="cert-bento-card">
+                        <div class="cert-icon-circle rank-bg"><i class="fas fa-trophy"></i></div>
+                        <div>
+                            <h4>2nd Rank - Science Olympiad</h4>
+                            <p class="cert-issuer">Academic Excellence Award</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Contact Bento Box (Span 12) -->
+            <section id="contact" class="bento-card contact-bento-card bento-span-12 tilt-card">
+                <div class="contact-header">
+                    <h2><i class="fas fa-paper-plane icon-accent"></i> Let's Build Something Extraordinary Together</h2>
+                    <p>Have an exciting opportunity or project in mind? Reach out directly!</p>
+                </div>
+
+                <div class="contact-methods">
+                    <div class="contact-item-card" onclick="copyToClipboard('ianujy@gmail.com', 'Email copied to clipboard!')">
+                        <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <span class="contact-label">Direct Email</span>
+                            <span class="contact-value">ianujy@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item-card" onclick="copyToClipboard('+917838042623', 'Phone number copied!')">
+                        <div class="contact-icon-box"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <span class="contact-label">Phone / WhatsApp</span>
+                            <span class="contact-value">+91-7838042623</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item-card" onclick="window.open('https://github.com/ianuj-yadav', '_blank')">
+                        <div class="contact-icon-box"><i class="fab fa-github"></i></div>
+                        <div>
+                            <span class="contact-label">GitHub</span>
+                            <span class="contact-value">github.com/ianuj-yadav</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item-card" onclick="window.open('https://linkedin.com/in/anuj-yadav', '_blank')">
+                        <div class="contact-icon-box"><i class="fab fa-linkedin"></i></div>
+                        <div>
+                            <span class="contact-label">LinkedIn</span>
+                            <span class="contact-value">linkedin.com/in/anuj-yadav</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clean Footer -->
+            <footer class="bento-footer bento-span-12">
+                <p>Designed & Engineered with ❤️ by <strong>Anuj Yadav</strong> · New Delhi, India © 2026</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- Script Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
