@@ -7,7 +7,20 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+
+// Serve static assets from root directory
+app.use(express.static(__dirname));
+
+// Explicit Root Route Handler
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Explicit Static Asset Fallbacks
+app.get('/style.css', (req, res) => res.sendFile(path.join(__dirname, 'style.css')));
+app.get('/app.js', (req, res) => res.sendFile(path.join(__dirname, 'app.js')));
+app.get('/anuj.jpg', (req, res) => res.sendFile(path.join(__dirname, 'anuj.jpg')));
+app.get('/hat_filled.png', (req, res) => res.sendFile(path.join(__dirname, 'hat_filled.png')));
 
 // Design Pamphlets Live Routes
 app.get('/pamphlet1', (req, res) => res.sendFile(path.join(__dirname, 'pamphlet1_aurora_glass.html')));
