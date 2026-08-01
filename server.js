@@ -1,9 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
-const os = require('os');
-const { execFile } = require('child_process');
+const https = require('https');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -36,8 +34,6 @@ const modelConfigs = [
 
 function executeNvidiaQuery(config, systemPrompt, userMessage) {
     return new Promise((resolve, reject) => {
-        const tempFile = path.join(os.tmpdir(), `nvidia_req_${Date.now()}_${Math.random().toString(36).substring(7)}.json`);
-
         const payload = JSON.stringify({
             model: config.model,
             messages: [
@@ -48,40 +44,46 @@ function executeNvidiaQuery(config, systemPrompt, userMessage) {
             max_tokens: config.maxTokens || 250
         });
 
-        fs.writeFile(tempFile, payload, 'utf8', (writeErr) => {
-            if (writeErr) {
-                return reject(new Error('Failed to prepare request payload.'));
-            }
+        const options = {
+            hostname: 'integrate.api.nvidia.com',
+            port: 443,
+            path: '/v1/chat/completions',
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${config.apiKey.trim()}`,
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(payload)
+            },
+            timeout: 12000
+        };
 
-            const args = [
-                '-s', '-X', 'POST',
-                'https://integrate.api.nvidia.com/v1/chat/completions',
-                '-H', `Authorization: Bearer ${config.apiKey.trim()}`,
-                '-H', 'Content-Type: application/json',
-                '-d', `@${tempFile}`
-            ];
-
-            execFile('curl.exe', args, { maxBuffer: 10 * 1024 * 1024, timeout: 12000 }, (error, stdout, stderr) => {
-                fs.unlink(tempFile, () => {});
-
-                if (error) {
-                    return reject(new Error(`cURL error: ${error.message}`));
-                }
-
+        const req = https.request(options, (res) => {
+            let data = '';
+            res.on('data', chunk => { data += chunk; });
+            res.on('end', () => {
                 try {
-                    const data = JSON.parse(stdout);
-                    if (data.choices && data.choices[0] && data.choices[0].message) {
-                        resolve(data.choices[0].message.content);
-                    } else if (data.error) {
-                        reject(new Error(data.error.message || JSON.stringify(data.error)));
+                    const response = JSON.parse(data);
+                    if (response.choices && response.choices[0] && response.choices[0].message) {
+                        return resolve(response.choices[0].message.content.trim());
+                    } else if (response.detail || response.error) {
+                        return reject(new Error(response.detail || JSON.stringify(response.error)));
                     } else {
-                        reject(new Error("Invalid API response format."));
+                        return reject(new Error('Invalid API response structure.'));
                     }
                 } catch (parseErr) {
-                    reject(new Error("Failed to parse JSON response."));
+                    return reject(new Error('Failed to parse JSON response.'));
                 }
             });
         });
+
+        req.on('error', (err) => reject(err));
+        req.on('timeout', () => {
+            req.destroy();
+            reject(new Error('API request timed out.'));
+        });
+
+        req.write(payload);
+        req.end();
     });
 }
 

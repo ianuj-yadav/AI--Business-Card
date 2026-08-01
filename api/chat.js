@@ -1,7 +1,4 @@
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-const { execFile } = require('child_process');
+const https = require('https');
 
 // Model configuration optimized for sub-second lightning speed & high quality
 const modelConfigs = [
@@ -21,8 +18,6 @@ const modelConfigs = [
 
 function executeNvidiaQuery(config, systemPrompt, userMessage) {
     return new Promise((resolve, reject) => {
-        const tempFile = path.join(os.tmpdir(), `nvidia_req_${Date.now()}_${Math.random().toString(36).substring(7)}.json`);
-
         const payload = JSON.stringify({
             model: config.model,
             messages: [
@@ -33,40 +28,46 @@ function executeNvidiaQuery(config, systemPrompt, userMessage) {
             max_tokens: config.maxTokens || 250
         });
 
-        fs.writeFile(tempFile, payload, 'utf8', (writeErr) => {
-            if (writeErr) {
-                return reject(new Error('Failed to prepare request payload.'));
-            }
+        const options = {
+            hostname: 'integrate.api.nvidia.com',
+            port: 443,
+            path: '/v1/chat/completions',
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${config.apiKey.trim()}`,
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(payload)
+            },
+            timeout: 12000
+        };
 
-            const args = [
-                '-s', '-X', 'POST',
-                'https://integrate.api.nvidia.com/v1/chat/completions',
-                '-H', `Authorization: Bearer ${config.apiKey.trim()}`,
-                '-H', 'Content-Type: application/json',
-                '-d', `@${tempFile}`
-            ];
-
-            execFile('curl.exe', args, { maxBuffer: 10 * 1024 * 1024, timeout: 12000 }, (error, stdout, stderr) => {
-                fs.unlink(tempFile, () => {});
-
-                if (error) {
-                    return reject(error);
-                }
-
+        const req = https.request(options, (res) => {
+            let data = '';
+            res.on('data', chunk => { data += chunk; });
+            res.on('end', () => {
                 try {
-                    const response = JSON.parse(stdout);
+                    const response = JSON.parse(data);
                     if (response.choices && response.choices[0] && response.choices[0].message) {
                         return resolve(response.choices[0].message.content.trim());
                     } else if (response.detail || response.error) {
                         return reject(new Error(response.detail || JSON.stringify(response.error)));
                     } else {
-                        return reject(new Error('Invalid response structure from AI model.'));
+                        return reject(new Error('Invalid API response structure.'));
                     }
                 } catch (parseErr) {
-                    return reject(new Error('Failed to parse AI model JSON response.'));
+                    return reject(new Error('Failed to parse JSON response.'));
                 }
             });
         });
+
+        req.on('error', (err) => reject(err));
+        req.on('timeout', () => {
+            req.destroy();
+            reject(new Error('API request timed out.'));
+        });
+
+        req.write(payload);
+        req.end();
     });
 }
 
