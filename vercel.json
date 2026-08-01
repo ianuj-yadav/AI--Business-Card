@@ -1,5 +1,7 @@
 {
+  "cleanUrls": true,
   "rewrites": [
+    { "source": "/api/chat", "destination": "/api/chat.js" },
     { "source": "/pamphlet1", "destination": "/pamphlet1_aurora_glass.html" },
     { "source": "/pamphlet2", "destination": "/pamphlet2_neo_brutalism.html" },
     { "source": "/pamphlet3", "destination": "/pamphlet3_japanese_zen.html" },

@@ -1,15 +1,13 @@
 {
-  "name": "ai-business-card",
+  "name": "anuj-yadav-portfolio",
   "version": "1.0.0",
-  "description": "AI Business Card for Mehek Aggarwal",
+  "description": "Anuj Yadav — Full-Page Fluid Bento AI Showcase & Developer Portfolio",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "echo 'No build step required'"
+    "start": "node server.js"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
-    "express": "^4.19.2",
-    "openai": "^4.52.7"
+    "express": "^4.19.2"
   }
 }
