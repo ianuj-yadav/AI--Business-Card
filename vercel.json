@@ -1,12 +1,10 @@
 {
-  "version": 2,
+  "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/chat", "destination": "/api/chat.js" },
     { "source": "/pamphlet1", "destination": "/pamphlet1_aurora_glass.html" },
     { "source": "/pamphlet2", "destination": "/pamphlet2_neo_brutalism.html" },
     { "source": "/pamphlet3", "destination": "/pamphlet3_japanese_zen.html" },
     { "source": "/pamphlet4", "destination": "/pamphlet4_cybernetic_holo.html" },
-    { "source": "/pamphlet5", "destination": "/pamphlet5_retro_risograph.html" },
-    { "source": "/(.*)", "destination": "/api/index.js" }
+    { "source": "/pamphlet5", "destination": "/pamphlet5_retro_risograph.html" }
   ]
 }
