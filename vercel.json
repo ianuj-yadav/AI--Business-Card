@@ -1,10 +1,54 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/pamphlet1", "destination": "/pamphlet1_aurora_glass.html" },
-    { "source": "/pamphlet2", "destination": "/pamphlet2_neo_brutalism.html" },
-    { "source": "/pamphlet3", "destination": "/pamphlet3_japanese_zen.html" },
-    { "source": "/pamphlet4", "destination": "/pamphlet4_cybernetic_holo.html" },
-    { "source": "/pamphlet5", "destination": "/pamphlet5_retro_risograph.html" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "index.html",
+          "style.css",
+          "app.js",
+          "anuj.jpg",
+          "mehek.jpg",
+          "hat_*.png",
+          "pamphlet*.html"
+        ]
+      }
+    },
+    {
+      "src": "api/chat.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/chat",
+      "dest": "api/chat.js"
+    },
+    {
+      "src": "/pamphlet1",
+      "dest": "server.js"
+    },
+    {
+      "src": "/pamphlet2",
+      "dest": "server.js"
+    },
+    {
+      "src": "/pamphlet3",
+      "dest": "server.js"
+    },
+    {
+      "src": "/pamphlet4",
+      "dest": "server.js"
+    },
+    {
+      "src": "/pamphlet5",
+      "dest": "server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
   ]
 }

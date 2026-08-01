@@ -15,9 +15,9 @@ app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, '..')));
 
 function serveFile(res, filename, mimeType) {
-    const cwdPath = path.join(process.cwd(), filename);
-    const dirPath = path.join(__dirname, filename);
-    const parentPath = path.join(__dirname, '..', filename);
+    const cwdPath = path.resolve(process.cwd(), filename);
+    const dirPath = path.resolve(__dirname, filename);
+    const parentPath = path.resolve(__dirname, '..', filename);
 
     let targetPath = null;
     if (fs.existsSync(cwdPath)) targetPath = cwdPath;
@@ -25,8 +25,14 @@ function serveFile(res, filename, mimeType) {
     else if (fs.existsSync(parentPath)) targetPath = parentPath;
 
     if (targetPath) {
-        if (mimeType) res.setHeader('Content-Type', mimeType);
-        res.sendFile(targetPath);
+        try {
+            const data = fs.readFileSync(targetPath);
+            if (mimeType) res.setHeader('Content-Type', mimeType);
+            res.send(data);
+        } catch (err) {
+            console.error(`Error reading ${filename}:`, err);
+            res.status(500).send(`Error reading ${filename}`);
+        }
     } else {
         res.status(404).send(`File ${filename} not found`);
     }
@@ -160,7 +166,7 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-if (process.env.NODE_ENV !== 'production') {
+if (require.main === module || process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
         console.log(`🚀 Witty AI Card server listening on port ${PORT} [Primary: meta/llama-3.1-8b-instruct]`);
     });
