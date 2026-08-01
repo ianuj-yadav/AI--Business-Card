@@ -120,6 +120,10 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`🚀 Witty AI Card server listening on port ${PORT} [Primary: meta/llama-3.1-8b-instruct]`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`🚀 Witty AI Card server listening on port ${PORT} [Primary: meta/llama-3.1-8b-instruct]`);
+    });
+}
+
+module.exports = app;
