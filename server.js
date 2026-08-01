@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const https = require('https');
 
 const app = express();
@@ -8,26 +9,50 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Serve static assets from root directory
+// Serve static assets from process root and __dirname
+app.use(express.static(process.cwd()));
 app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '..')));
+
+function serveFile(res, filename, mimeType) {
+    const cwdPath = path.join(process.cwd(), filename);
+    const dirPath = path.join(__dirname, filename);
+    const parentPath = path.join(__dirname, '..', filename);
+
+    let targetPath = null;
+    if (fs.existsSync(cwdPath)) targetPath = cwdPath;
+    else if (fs.existsSync(dirPath)) targetPath = dirPath;
+    else if (fs.existsSync(parentPath)) targetPath = parentPath;
+
+    if (targetPath) {
+        if (mimeType) res.setHeader('Content-Type', mimeType);
+        res.sendFile(targetPath);
+    } else {
+        res.status(404).send(`File ${filename} not found`);
+    }
+}
 
 // Explicit Root Route Handler
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    serveFile(res, 'index.html', 'text/html; charset=utf-8');
 });
 
 // Explicit Static Asset Fallbacks
-app.get('/style.css', (req, res) => res.sendFile(path.join(__dirname, 'style.css')));
-app.get('/app.js', (req, res) => res.sendFile(path.join(__dirname, 'app.js')));
-app.get('/anuj.jpg', (req, res) => res.sendFile(path.join(__dirname, 'anuj.jpg')));
-app.get('/hat_filled.png', (req, res) => res.sendFile(path.join(__dirname, 'hat_filled.png')));
+app.get('/style.css', (req, res) => serveFile(res, 'style.css', 'text/css; charset=utf-8'));
+app.get('/app.js', (req, res) => serveFile(res, 'app.js', 'application/javascript; charset=utf-8'));
+app.get('/anuj.jpg', (req, res) => serveFile(res, 'anuj.jpg', 'image/jpeg'));
+app.get('/mehek.jpg', (req, res) => serveFile(res, 'mehek.jpg', 'image/jpeg'));
+app.get('/hat_filled.png', (req, res) => serveFile(res, 'hat_filled.png', 'image/png'));
+app.get('/hat_filled_transparent.png', (req, res) => serveFile(res, 'hat_filled_transparent.png', 'image/png'));
+app.get('/hat_full.png', (req, res) => serveFile(res, 'hat_full.png', 'image/png'));
+app.get('/hat_half.png', (req, res) => serveFile(res, 'hat_half.png', 'image/png'));
 
 // Design Pamphlets Live Routes
-app.get('/pamphlet1', (req, res) => res.sendFile(path.join(__dirname, 'pamphlet1_aurora_glass.html')));
-app.get('/pamphlet2', (req, res) => res.sendFile(path.join(__dirname, 'pamphlet2_neo_brutalism.html')));
-app.get('/pamphlet3', (req, res) => res.sendFile(path.join(__dirname, 'pamphlet3_japanese_zen.html')));
-app.get('/pamphlet4', (req, res) => res.sendFile(path.join(__dirname, 'pamphlet4_cybernetic_holo.html')));
-app.get('/pamphlet5', (req, res) => res.sendFile(path.join(__dirname, 'pamphlet5_retro_risograph.html')));
+app.get('/pamphlet1', (req, res) => serveFile(res, 'pamphlet1_aurora_glass.html', 'text/html; charset=utf-8'));
+app.get('/pamphlet2', (req, res) => serveFile(res, 'pamphlet2_neo_brutalism.html', 'text/html; charset=utf-8'));
+app.get('/pamphlet3', (req, res) => serveFile(res, 'pamphlet3_japanese_zen.html', 'text/html; charset=utf-8'));
+app.get('/pamphlet4', (req, res) => serveFile(res, 'pamphlet4_cybernetic_holo.html', 'text/html; charset=utf-8'));
+app.get('/pamphlet5', (req, res) => serveFile(res, 'pamphlet5_retro_risograph.html', 'text/html; charset=utf-8'));
 
 // Model configuration optimized for sub-second lightning speed & high quality
 const modelConfigs = [
